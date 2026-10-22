@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local SQLite database (recreated automatically on startup)
+*.db
+*.db-journal
+
+# Virtual environment
+.venv/
+venv/
+
+# Local environment settings (.env.example is kept)
+.env
+
+# Test / tool caches
+.pytest_cache/
+
+# OS files
+.DS_Store

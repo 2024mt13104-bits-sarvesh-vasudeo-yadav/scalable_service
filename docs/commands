@@ -1,0 +1,35 @@
+Required Python version:
+python --version
+Python 3.13
+
+Commands to Run:
+py -3.13 -m venv .venv
+
+.venv\Scripts\activate.bat
+
+python -m pip install --upgrade pip
+
+python -m pip install -r requirements.txt
+
+set DB_PATH=inventory.db
+python -m uvicorn app:app --host 127.0.0.1 --port 8002
+
+set DB_PATH=payment.db
+python -m uvicorn app:app --host 127.0.0.1 --port 8003
+
+set DB_PATH=notification.db
+python -m uvicorn app:app --host 127.0.0.1 --port 8004
+
+python -m pytest -v
+
+Command to run test file from root directory/folder:-
+services\inventory-service\.venv\Scripts\python.exe -m pytest services\inventory-service\test_app.py -q
+services\payment-service\.venv\Scripts\python.exe -m pytest services\payment-service\test_app.py -q
+services\notification-service\.venv\Scripts\python.exe -m pytest services\notification-service\test_app.py -q
+services\notification-service\.venv\Scripts\python.exe -m pytest services\notification-service\test_app.py -q
+
+Command to run scripts file from root directory/folder:-
+services\order-service\.venv\Scripts\python.exe scripts\e2e_demo.py
+services\order-service\.venv\Scripts\python.exe scripts\failure_demo.py
+services\order-service\.venv\Scripts\python.exe scripts\idempotency_demo.py
+services\order-service\.venv\Scripts\python.exe scripts\concurrency_demo.py

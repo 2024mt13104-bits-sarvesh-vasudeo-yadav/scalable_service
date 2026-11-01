@@ -1,0 +1,7 @@
+**Idempotency Testing**
+
+We ran the idempotency demonstration against the ShopFlow microservices. The first request created a confirmed order and payment. Repeating the request with the same idempotency key and identical payload returned the same order ID and payment ID, with `replayed: true`. Reusing the same key with a modified quantity returned HTTP `409 Conflict` with the error code `IDEMPOTENCY_CONFLICT`. These results demonstrate duplicate-request protection and validation of idempotency-key reuse.
+
+**Failure Handling and Inventory Compensation**
+
+The failure-handling demonstration was executed by submitting an order with payment failure simulation enabled. The Order Service returned HTTP 200 with the order status `FAILED` and error `MOCK_PAYMENT_FAILED`. The inventory quantity was set to 10 before the test and remained at 10 after the failed order. This demonstrates that the inventory reservation was compensated, preventing stock from remaining deducted when payment failed.
